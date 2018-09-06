@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var tableView: UITableView!
       var refreshControl = UIRefreshControl()
     var movies: [[String: Any]] = []
+    var isMoreDataLoading = false
+    var loadingMoreView:InfiniteScrollActivityView?
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movies.count
     }
@@ -49,8 +51,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.refreshControl.addTarget(self, action: #selector(ViewController.pullToRefresh(_:)), for: .valueChanged)
         
          tableView.insertSubview(refreshControl, at: 0)
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset
+        insets.bottom += InfiniteScrollActivityView.defaultHeight
+        tableView.contentInset = insets
       
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                // Code to load more results
+                fetchMovies()
+            }
+        }
     }
     
     @objc func pullToRefresh(_ refreshControl: UIRefreshControl)  {
@@ -71,7 +102,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
             // This will run when the network request returns
-            if let error = error {
+            
+                if let error = error {
+                    let errorAlertController = UIAlertController(title: "Cannot Get Movies", message: "The Internet connections appears to be offline.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Retry", style: .cancel)
+                    errorAlertController.addAction(cancelAction)
+                    self.present(errorAlertController, animated: true)
                 print(error.localizedDescription)
             } else if let data = data {
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
@@ -80,8 +116,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 // TODO: Store the movies in a property to use elsewhere
                 // TODO: Reload your table view data
                 
+                // Update flag
+                self.isMoreDataLoading = false
+                
+                // Stop the loading indicator
+                self.loadingMoreView!.stopAnimating()
+                
                 self.movies = dataDictionary["results"] as! [[String: Any]]
                 self.tableView.reloadData()
+            
                 
             }
             self.refreshControl.endRefreshing()

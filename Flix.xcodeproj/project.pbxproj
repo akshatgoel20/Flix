@@ -15,6 +15,8 @@
 		ACD7212A21409BDA00409403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD7212921409BDA00409403 /* Assets.xcassets */; };
 		ACD7212D21409BDA00409403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD7212B21409BDA00409403 /* LaunchScreen.storyboard */; };
 		ACD721352140A6F100409403 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD721342140A6F100409403 /* MovieItem.swift */; };
+		ACE79E4B2141970C002396F5 /* DetailMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE79E4A2141970C002396F5 /* DetailMovieViewController.swift */; };
+		ACE79E4D2141C1D2002396F5 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE79E4C2141C1D2002396F5 /* InfiniteScrollActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		ACD7212C21409BDA00409403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD7212E21409BDA00409403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD721342140A6F100409403 /* MovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
+		ACE79E4A2141970C002396F5 /* DetailMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieViewController.swift; sourceTree = "<group>"; };
+		ACE79E4C2141C1D2002396F5 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		D2AC61A5FABD815ED67D74CD /* Pods_Flix.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flix.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5D919575D104D8E328D682D /* Pods-Flix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flix.debug.xcconfig"; path = "Target Support Files/Pods-Flix/Pods-Flix.debug.xcconfig"; sourceTree = "<group>"; };
 		F1C215362B272F4BEC97C688 /* Pods-Flix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flix.release.xcconfig"; path = "Target Support Files/Pods-Flix/Pods-Flix.release.xcconfig"; sourceTree = "<group>"; };
@@ -50,7 +54,6 @@
 				D5D919575D104D8E328D682D /* Pods-Flix.debug.xcconfig */,
 				F1C215362B272F4BEC97C688 /* Pods-Flix.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -91,6 +94,8 @@
 				ACD7212E21409BDA00409403 /* Info.plist */,
 				ACD7212621409BD800409403 /* Flix.xcdatamodeld */,
 				ACD721342140A6F100409403 /* MovieItem.swift */,
+				ACE79E4A2141970C002396F5 /* DetailMovieViewController.swift */,
+				ACE79E4C2141C1D2002396F5 /* InfiniteScrollActivityView.swift */,
 			);
 			path = Flix;
 			sourceTree = "<group>";
@@ -169,15 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Flix-checkManifestLockResult.txt",
 			);
@@ -191,16 +192,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Flix/Pods-Flix-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
@@ -217,9 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE79E4D2141C1D2002396F5 /* InfiniteScrollActivityView.swift in Sources */,
 				ACD7212821409BD800409403 /* Flix.xcdatamodeld in Sources */,
 				ACD721352140A6F100409403 /* MovieItem.swift in Sources */,
 				ACD7212221409BD800409403 /* ViewController.swift in Sources */,
+				ACE79E4B2141970C002396F5 /* DetailMovieViewController.swift in Sources */,
 				ACD7212021409BD800409403 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
