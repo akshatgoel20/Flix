@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var activityController: UIActivityIndicatorView!
     
     @IBOutlet weak var tableView: UITableView!
+      var refreshControl = UIRefreshControl()
     var movies: [[String: Any]] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movies.count
@@ -44,13 +45,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
         tableView.delegate = self
         fetchMovies() ;
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: #selector(ViewController.pullToRefresh(_:)), for: .valueChanged)
         
+         tableView.insertSubview(refreshControl, at: 0)
+      
+        
+    }
+    
+    @objc func pullToRefresh(_ refreshControl: UIRefreshControl)  {
+        fetchMovies()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
     
     func fetchMovies()  {
         activityController.startAnimating()
@@ -72,6 +84,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.tableView.reloadData()
                 
             }
+            self.refreshControl.endRefreshing()
         }
         task.resume()
         activityController.stopAnimating()
