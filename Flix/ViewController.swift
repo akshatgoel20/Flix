@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -30,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let baseURLString = "https://image.tmdb.org/t/p/w500"
         
         let posterURL = URL(string: baseURLString + posterPathString)!
-        cell.posterImageView.
+        cell.posterImageView.af_setImage(withURL: posterURL)
         
         return cell
     }
@@ -39,6 +41,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        tableView.dataSource = self
+        tableView.delegate = self
         fetchMovies() ;
         
     }
