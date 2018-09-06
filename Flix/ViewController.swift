@@ -10,15 +10,19 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var activityController: UIActivityIndicatorView!
-    
+    var filteredData: [[String: Any]] = []
     @IBOutlet weak var tableView: UITableView!
       var refreshControl = UIRefreshControl()
     var movies: [[String: Any]] = []
     var isMoreDataLoading = false
     var loadingMoreView:InfiniteScrollActivityView?
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movies.count
     }
@@ -59,9 +63,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var insets = tableView.contentInset
         insets.bottom += InfiniteScrollActivityView.defaultHeight
         tableView.contentInset = insets
+        searchBar.delegate = self
+        searchBar.sizeToFit()
       
         
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        movies = searchText.isEmpty ? movies : movies.filter { (item: [String:Any]) -> Bool in
+            // If dataItem matches the searchText, return true to include it
+            let name  = item["title"] as! String
+            return name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
+        }
+
+        tableView.reloadData()
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+        fetchMovies()
+    }
+
+
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (!isMoreDataLoading) {
