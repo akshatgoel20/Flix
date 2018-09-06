@@ -13,6 +13,7 @@
 		ACD7212821409BD800409403 /* Flix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ACD7212621409BD800409403 /* Flix.xcdatamodeld */; };
 		ACD7212A21409BDA00409403 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD7212921409BDA00409403 /* Assets.xcassets */; };
 		ACD7212D21409BDA00409403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD7212B21409BDA00409403 /* LaunchScreen.storyboard */; };
+		ACD721352140A6F100409403 /* MovieItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD721342140A6F100409403 /* MovieItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		ACD7212921409BDA00409403 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ACD7212C21409BDA00409403 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ACD7212E21409BDA00409403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACD721342140A6F100409403 /* MovieItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				ACD7212B21409BDA00409403 /* LaunchScreen.storyboard */,
 				ACD7212E21409BDA00409403 /* Info.plist */,
 				ACD7212621409BD800409403 /* Flix.xcdatamodeld */,
+				ACD721342140A6F100409403 /* MovieItem.swift */,
 			);
 			path = Flix;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD7212821409BD800409403 /* Flix.xcdatamodeld in Sources */,
+				ACD721352140A6F100409403 /* MovieItem.swift in Sources */,
 				ACD7212221409BD800409403 /* ViewController.swift in Sources */,
 				ACD7212021409BD800409403 /* AppDelegate.swift in Sources */,
 			);
