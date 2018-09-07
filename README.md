@@ -1,20 +1,21 @@
-# Flix
-Flix project, iOS, for code path.
+# Project 1 - *Flix*
 
-Submitted by: **Akshat Goel**
+**Flix** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
 Time spent: **5** hours spent in total
 
 ## User Stories
 
-The following **required** functionality is complete:
+The following **required** user stories are complete:
 
-* [X] User sees app icon in home screen and styled launch screen.
-* [X] User can scroll through a list of movies currently playing in theaters from The Movie DB API (title, poster image, and overview).
-* [X] User can "Pull to refresh" the movie list.
-* [X] User sees a loading state while waiting for the movies to load.
-* [X] User sees an alert when there's a networking error.
-* [X] User can search for a movie.
+* [X] User sees app icon in home screen and styled launch screen
+* [X] User can scroll through a list of movies currently playing in theaters from The Movie DB API
+* [X] User can "Pull to refresh" the movie list
+* [X] User sees a loading state while waiting for the movies to load
+
+The following **stretch** user stories are implemented:
+- [X] User sees an alert when there's a networking error (+1pt)
+- [X] User can search for a movie (+3pt)
 
 ## Video Walkthrough 
 
