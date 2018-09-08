@@ -169,6 +169,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         activityController.stopAnimating()
         MBProgressHUD.hideAllHUDs(for: view, animated: true)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! DetailMovieViewController
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        vc.movie = movie
+        
+    }
 
 
 }
