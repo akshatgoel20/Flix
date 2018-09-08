@@ -72,7 +72,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-        movies = searchText.isEmpty ? movies : movies.filter { (item: [String:Any]) -> Bool in
+        movies = searchText.isEmpty ? movies : filteredData.filter { (item: [String:Any]) -> Bool in
             // If dataItem matches the searchText, return true to include it
             let name  = item["title"] as! String
             return name.range(of: searchText, options: .caseInsensitive, range: nil, locale: nil) != nil
@@ -89,7 +89,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        fetchMovies()
+        movies = filteredData ;
+        tableView.reloadData() ;
     }
 
 
@@ -157,6 +158,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.loadingMoreView!.stopAnimating()
                 
                 self.movies = dataDictionary["results"] as! [[String: Any]]
+                    self.filteredData = self.movies
                 self.tableView.reloadData()
             
                 
