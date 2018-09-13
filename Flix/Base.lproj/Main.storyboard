@@ -14,7 +14,7 @@
         <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Movies" id="BYZ-38-t0r" customClass="ViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
         <scene sceneID="f2h-vM-359">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wL8-Oy-glu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="nowPlaying" id="XSQ-vH-sjf"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" image="nowPlaying" selectedImage="nowPlaying" id="XSQ-vH-sjf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9mN-lv-szj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -269,7 +269,7 @@
         <scene sceneID="FfR-2J-RBC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ECl-75-nRh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Superhero" selectedImage="superhero" id="9wz-mw-6FO"/>
+                    <tabBarItem key="tabBarItem" title="Superhero" image="superhero" selectedImage="superhero" id="9wz-mw-6FO"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="l0b-K3-FMQ">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
