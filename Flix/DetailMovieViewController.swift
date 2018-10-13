@@ -20,7 +20,7 @@ class DetailMovieViewController: UIViewController {
         static let posterPathString  = "poster_path"
     }
     
-    var movie: [String: Any]?
+    var movie:Movie!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var movieName: UILabel!
@@ -29,11 +29,11 @@ class DetailMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let movie  = movie{
-            movieName.text = movie[MovieKeys.title] as? String
-            overviewLabel.text = movie[MovieKeys.overview] as? String
-            releaseDate.text = movie[MovieKeys.releaseDate] as? String
-            let backdropPathString  = movie[MovieKeys.backdropString] as? String
-            let posterPathString = movie[MovieKeys.posterPathString] as? String
+            movieName.text = movie.title
+            overviewLabel.text = movie.overview
+            releaseDate.text = movie.releaseDate
+            let backdropPathString  = movie.backDropPathString
+            let posterPathString = movie.posterPathString
             
             let baseURLString = "https://image.tmdb.org/t/p/w500"
             let backdropURL = URL(string: baseURLString+backdropPathString!

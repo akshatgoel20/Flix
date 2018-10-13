@@ -7,10 +7,20 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PosterCell: UICollectionViewCell {
     
    
     @IBOutlet weak var posterImagevView: UIImageView!
+    var movies : Movie! {
+        didSet {
+            let posterURL = movies.posterURL
+            let placeholderImage = UIImage(named: "placeholder")!
+            posterImagevView.af_setImage(withURL: posterURL!, placeholderImage: placeholderImage)
+        }
+    }
     
 }
+
+
